@@ -29,13 +29,13 @@ class SceneRegistry {
         trace('Successfully loaded ${Lambda.count(sceneScriptedClasses)} scenes!');
     }
 
-    public static function fetchScene(sceneID:String):Null<Scene> {
+    public static function fetchScene(sceneID:String):Scene {
         if (!sceneScriptedClasses.exists(sceneID)) {
             trace('Unable to load scene $sceneID');
             return null;
         }
 
-        final sceneClass:Null<String> = sceneScriptedClasses.get(sceneID);
+        final sceneClass:String = sceneScriptedClasses.get(sceneID);
 
         if (sceneClass != null) {
             final scene:Scene = ScriptedScene.init(sceneClass, sceneID);
