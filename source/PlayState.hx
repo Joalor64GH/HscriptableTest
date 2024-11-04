@@ -23,6 +23,6 @@ class PlayState extends FlxState {
 		super.update(elapsed);
 
 		if (FlxG.keys.justPressed.SPACE)
-			FlxG.switchState(() -> SceneRegistry.fetchScene('test'));
+			FlxG.switchState(SceneRegistry.fetchScene('test'));
 	}
 }
