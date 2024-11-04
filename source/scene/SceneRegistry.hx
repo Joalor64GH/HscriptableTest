@@ -20,7 +20,7 @@ class SceneRegistry {
                 if (scene == null)
                     continue;
 
-                trace('Initialized scene ${scene.id});
+                trace('Initialized scene ${scene.id}');
 
                 sceneScriptedClasses.set(scene.id, sceneClass);
             }
