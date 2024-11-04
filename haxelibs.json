@@ -10,7 +10,9 @@
     },
     {
       "name": "flixel",
-      "type": "haxelib"
+			"type": "git",
+			"ref": "dev",
+			"url": "https://github.com/HaxeFlixel/flixel.git"
     },
     {
       "name": "hxcpp",
