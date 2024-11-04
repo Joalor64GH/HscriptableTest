@@ -17,8 +17,14 @@
       "type": "haxelib"
     },
     {
-      "name": "polymod",
+      "name": "hscript",
       "type": "haxelib"
+    },
+    {
+      "name": "polymod",
+			"type": "git",
+			"ref": "scripting-updates",
+			"url": "https://github.com/larsiusprime/polymod.git"
     },
     {
       "name": "thx.core",
