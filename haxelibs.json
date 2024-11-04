@@ -13,18 +13,6 @@
       "type": "haxelib"
     },
     {
-      "name": "flixel-addons",
-      "type": "haxelib"
-    },
-    {
-      "name": "flixel-ui",
-      "type": "haxelib"
-    },
-    {
-      "name": "flixel-tools",
-      "type": "haxelib"
-    },
-    {
       "name": "hxcpp",
       "type": "haxelib"
     },

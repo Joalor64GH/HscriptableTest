@@ -3,7 +3,7 @@
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="HaxeFlixel Template" file="Template" main="Main" version="1.0.0" company="Joalor64" />
+	<app title="HaxeFlixel Template" file="HscriptableTest" main="Main" version="1.0.0" company="Joalor64" />
 	<app preloader="flixel.system.FlxPreloader" />
 
 	<!-- Minimum without FLX_NO_GAMEPAD: 11.8, without FLX_NO_NATIVE_CURSOR: 11.2 -->
@@ -36,7 +36,7 @@
 	<set name="BUILD_DIR" value="export/release" unless="debug" />
 
 	<source path="source" />
-	<assets path="assets" exclude="*.mp3" unless="web" />
+	<assets path="assets" />
 
 	<assets path="mods" if="FUTURE_POLYMOD" />
 
@@ -44,15 +44,6 @@
 
 	<!-- Default flixel library -->
 	<haxelib name="flixel" />
-
-	<!-- In case you want to use the addons package -->
-	<haxelib name="flixel-addons" />
-	
-	<!-- In case you want to use the ui package -->
-	<haxelib name="flixel-ui" />
-
-	<!-- In case you want to use the tools package -->
-	<haxelib name="flixel-tools" />
 
 	<!-- In case you want to use the modding framework -->
 	<haxelib name="polymod" if="FUTURE_POLYMOD" />
@@ -73,6 +64,7 @@
 	<!-- Fix for macros -->
 	<haxeflag name="--macro" value="allowPackage('flash')" />
 	<haxeflag name="--macro" value="include('my.pack')" />
+	<haxeflag name="--macro" value="include('flixel', true, ['flixel.addons.editors.spine.*', 'flixel.addons.nape.*', 'flixel.system.macros.*'])" />
 
 	<!-- Analyzer optimization -->
 	<haxedef name="analyzer-optimize" />
@@ -84,7 +76,10 @@
 	<haxedef name="message.reporting" value="pretty" />
 
 	<!-- For polymod -->
-	<haxedef name="POLYMOD_DEBUG" value="true" if="debug" />
+	<section if="polymod">
+		<haxedef name="POLYMOD_SCRIPT_CLASS_EXT" value=".hxs" />
+		<haxedef name="POLYMOD_DEBUG" value="true" if="debug" />
+	</section>
 
 	<!-- _________________________________ Custom _______________________________ -->
 

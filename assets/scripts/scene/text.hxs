@@ -1,0 +1,26 @@
+import flixel.FlxG;
+import flixel.FlxSprite;
+import flixel.text.FlxText;
+import flixel.util.FlxColor;
+import scene.Scene;
+
+class TestScene extends Scene {
+    public function new():Void {
+        super('test');
+    }
+
+    public override function create():Void {
+        super.create();
+        
+        var spr:FlxSprite = new FlxSprite(320, 320).makeGraphic(50, 50, FlxColor.GREEN);
+        add(spr);
+
+        var text:FlxText = new FlxText(0, 0, 0, "If you see this, it worked!", 48);
+        text.screenCenter();
+        add(text);
+    }
+
+    public override function update(elapsed:Float) {
+        super.update(elapsed);
+    }
+}

@@ -47,6 +47,8 @@ class ModHandler {
 		if (!FileSystem.exists(MOD_DIR + '/mods-go-here.txt'))
 			File.saveContent(MOD_DIR + '/mods-go-here.txt', '');
 
+		buildImports();
+
 		var loadedModlist:Array<ModMetadata> = Polymod.init({
 			modRoot: MOD_DIR,
 			dirs: folders,
@@ -65,6 +67,8 @@ class ModHandler {
 
 		for (mod in loadedModlist)
 			trace('Name: ${mod.title}, [${mod.id}]');
+
+		scene.SceneRegistry.loadScenes();
 	}
 
 	public static function getMods():Array<String> {
@@ -94,6 +98,7 @@ class ModHandler {
 	public static function getParseRules():ParseRules {
 		final output:ParseRules = ParseRules.getDefault();
 		output.addType("txt", TextFileFormat.LINES);
+		output.addType('hxs', TextFileFormat.PLAINTEXT);
 		return output != null ? output : null;
 	}
 
@@ -115,6 +120,30 @@ class ModHandler {
 						trace(error.message);
 				}
 		}
+	}
+
+	private static inline function buildImports():Void {
+		Polymod.addImportAlias('flixel.effects.particles.FlxEmitter', flixel.effects.particles.FlxEmitter);
+		Polymod.addImportAlias('flixel.group.FlxContainer', flixel.group.FlxContainer);
+		Polymod.addImportAlias('flixel.group.FlxGroup', flixel.group.FlxGroup);
+		Polymod.addImportAlias('flixel.group.FlxSpriteContainer', flixel.group.FlxSpriteContainer);
+		Polymod.addImportAlias('flixel.group.FlxSpriteGroup', flixel.group.FlxSpriteGroup);
+		Polymod.addImportAlias('flixel.math.FlxPoint', flixel.math.FlxPoint.FlxBasePoint);
+
+		#if cpp
+		Polymod.blacklistImport('cpp.Lib');
+		#end
+		Polymod.blacklistImport('haxe.Serializer');
+		Polymod.blacklistImport('haxe.Unserializer');
+		Polymod.blacklistImport('lime.system.CFFI');
+		Polymod.blacklistImport('lime.system.System');
+		Polymod.blacklistImport('lime.system.JNI');
+		Polymod.blacklistImport('lime.utils.Assets');
+		Polymod.blacklistImport('openfl.desktop.NativeProcess');
+		Polymod.blacklistImport('openfl.utils.Assets');
+		Polymod.blacklistImport('Sys');
+		Polymod.blacklistImport('Reflect');
+		Polymod.blacklistImport('Type');
 	}
 	#end
 }
