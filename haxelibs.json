@@ -10,9 +10,10 @@
     },
     {
       "name": "flixel",
-			"type": "git",
-			"ref": "dev",
-			"url": "https://github.com/HaxeFlixel/flixel.git"
+      "type": "git",
+      "dir": null,
+      "ref": "f2b090d6c608471e730b051c8ee22b8b378964b1",
+      "url": "https://github.com/FunkinCrew/flixel"
     },
     {
       "name": "hxcpp",
@@ -20,7 +21,9 @@
     },
     {
       "name": "hscript",
-      "type": "haxelib"
+			"type": "git",
+			"ref": "master",
+			"url": "https://github.com/HaxeFoundation/hscript.git"
     },
     {
       "name": "polymod",
