@@ -15,6 +15,7 @@ import polymod.format.ParseRules;
 
 class ModHandler {
 	static final MOD_DIR:String = 'mods';
+	static final CORE_DIR:String = 'assets';
 	static final API_VERSION:String = '1.0.0';
 
 	#if FUTURE_POLYMOD
@@ -55,9 +56,13 @@ class ModHandler {
 			framework: OPENFL,
 			apiVersionRule: API_VERSION,
 			errorCallback: onError,
+			frameworkParams: {
+				coreAssetRedirect: CORE_DIR
+			},
 			parseRules: getParseRules(),
 			extensionMap: extensions,
-			ignoredFiles: Polymod.getDefaultIgnoreList()
+			ignoredFiles: Polymod.getDefaultIgnoreList(),
+			useScriptedClasses: true
 		});
 
 		if (loadedModlist == null)
@@ -93,6 +98,11 @@ class ModHandler {
 			trace('Found ${daList.length} new mods.');
 
 		return daList != null && daList.length > 0 ? daList : [];
+	}
+
+	public static function getModIDs():Array<String> {
+		var modIDs:Array<String> = [for (i in trackedMods) i.id];
+		return modIDs;
 	}
 
 	public static function getParseRules():ParseRules {

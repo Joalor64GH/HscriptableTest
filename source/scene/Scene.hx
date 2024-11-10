@@ -8,16 +8,16 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 class Scene extends FlxState {
     public var id:String;
 
-    public function new(id:String) {
+    public function new(id:String):Void {
         super();
         this.id = id;
     }
 
-    public override function create() {
+    public override function create():Void {
         super.create();
     }
 
-    public override function update(elapsed:Float) {
+    public override function update(elapsed:Float):Void {
         super.update(elapsed);
     }
 }
